@@ -1,0 +1,33 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="was-validated principal-div">
+    <div class="mb-3">
+        <label for="emailInput" class="form-label">Email or Username</label>
+        <input formControlName="email" type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
+        <div class="invalid" *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].errors?.['required']">The email field cannot be empty</div>
+        <div class="invalid" *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].errors?.['pattern']">The email field has an incorrect format</div>
+        <div class="valid" *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].valid">Correct field content :)</div>
+    </div>
+    <div class="mb-3">
+        <label for="documentNumber" class="form-label">Document Number (only 7 or 8 characters long)</label>
+        <input formControlName="documentNumber" type="string" class="form-control" id="documentNumber">
+        <div class="invalid" *ngIf="loginForm.controls['documentNumber'].dirty && loginForm.controls['documentNumber'].errors?.['pattern']">The document number field must contain only numeric characters</div>
+        <div class="invalid" *ngIf="loginForm.controls['documentNumber'].dirty && loginForm.controls['documentNumber'].errors?.['required']">The document number field cannot be empty</div> 
+        <div class="invalid" *ngIf="loginForm.controls['documentNumber'].dirty && loginForm.controls['documentNumber'].errors?.['minlength']">The document number must have at least 7 numbers</div>
+        <div class="invalid" *ngIf="loginForm.controls['documentNumber'].dirty && loginForm.controls['documentNumber'].errors?.['maxlength']">The document number field must have a maximum of 8 numbers.</div>                       
+        <div class="valid" *ngIf="loginForm.controls['documentNumber'].dirty && loginForm.controls['documentNumber'].valid">Correct field content :)</div>
+    </div>
+    <div class="mb-3">
+        <label for="passwordInput" class="form-label">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="passwordInput">
+        <div class="invalid" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['minlength']">The password field must have at least 6 characters</div>
+        <div class="invalid" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['required']">The password field cannot be empty</div>
+        <div class="valid" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].valid">Correct field content :)</div>
+    </div>
+    <div class="mb-3 form-check">
+        <label class="form-check-label" for="credentialRememberCheck">Credential Remember</label>
+        <input formControlName="credentialRemember" type="checkbox" class="form-check-input" id="credentialRememberCheck">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+    <button type="button" class="btn btn-secondary">Register</button>
+    <button type="button" class="btn btn-secondary">Password recovery</button>
+</form>
